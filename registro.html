@@ -1,0 +1,89 @@
+<html>
+  <head>
+	<title>Registro</title>
+		<script>
+		function vervalores(){
+		var sAux="";
+		var frm = document.getElementById("registro");
+		for (i=0;i<frm.elements.length;i++)
+		{ 
+		sAux += "NOMBRE: " + frm.elements[i].name + " "; 
+		sAux += "VALOR: " + frm.elements[i].value + "\n" ;
+		} 
+		alert(sAux); 
+		}
+		
+		function validacion(){
+			var frm = document.getElementById("registro");
+			for (i=0;i<frm.elements.length;i++)
+			{ 
+				if(i==0 && (/^\s+$/.test(frm.elements[0].value) || frm.elements[0].value.length==0 || frm.elements[0].value == null)){
+					alert("Nombre incorrecto o vacio.");
+					return false;
+				}
+				if(i==1 && (/^\s+$/.test(frm.elements[1].value) || frm.elements[1].value.length==0 || frm.elements[1].value == null)){
+					alert("Apellidos incorrectos o campo vacio.");
+					return false;
+				}
+				if(i==2 && !(/[a-z]{3,}[0-9]{3}@(ikasle.)?ehu.e(u)?s/.test(frm.elements[2].value))) {
+  					alert("Correo electronico incorrecto o campo vacio.");
+  					return false;
+				}
+				if(i==3 && (frm.elements[3].value.length<6 || frm.elements[3].value == null)){
+					alert("Password incorrecto o campo vacio.");
+					return false;
+				}
+				if(i==4 && (!(/^[6|9]{1}\d{8}$/.test(frm.elements[4].value)) || frm.elements[4].value.length==0 || frm.elements[4].value == null)){
+					alert("Telefono incorrecto o campo vacio.");
+					return false;
+				}
+				if(i==5 && ((frm.elements[5].value != "inglenieria del software" && frm.elements[5].value != "computacion" && 
+				frm.elements[5].value != "ingenieria de computadores") || frm.elements[5].value.length==0 || frm.elements[5].value == null)){
+					return false;
+				}
+				
+			} 
+			return true;
+		}
+		</script>
+		 <link rel='stylesheet' type='text/css' href='style/style.css' />
+ </head>
+ 
+ <body>
+  <div id='page-wrap'>
+  <header class='main' id='h1'>
+		<h2>Formulario de registro</h2>
+	<form action="registrar.php" method="post" id='registro' name='registro' onSubmit='return validacion()'>
+        <legend>Rellene los campos:</legend>
+             <label>Nombre</label>
+                <input id="registro" name="nombre" type="text"  />
+            <br/>
+           	 <label>Apellidos</label>
+           	 	<input id="registro" name="apellidos" type="text"  />
+           	 <br/>
+           	 <label>Email</label>
+                <input id="registro" name="email" type="text"  />
+            <br/>
+             <label>Password</label>
+                <input id="registro" name="password" type="password"  />
+            <br/>
+             <label>Telefono</label>
+                <input id="registro" name="telefono" type="text"  />
+            <br/>
+             <label>Especialidad</label>
+                 <select id="registro" name="especialidad" >
+                	<option value="ingenieria de computadores">ingenieria de computadores</option>
+                	<option value="ingenieria de software">ingenieria de software</option>
+                	<option value="computacion">computacion</option>
+                </select>
+           <br/>
+           <button id="resgistro" type="submit" value="submit"> Enviar </button>
+           <br/>
+         
+	</form>
+
+		<span><a href='layout.html'>Inicio</a></spam>
+    </header>
+  </div>
+  </body>
+</html>
